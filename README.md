@@ -199,20 +199,3 @@ FROM stats
 GROUP BY referrer_source
 ORDER BY total_visits DESC;
 ```
-
-## Next steps & recommendations
-
-- Add authentication and role management for multiple admin users.
-- Add pagination and filters to the dashboard stats page.
-- Hook into a real analytics dashboard or export data to CSV/JSON for offline analysis.
-- Add unit tests and CI to ensure future changes remain safe.
-
----
-
-If you'd like, I can also:
-
-- Add an SQL migration file for the schemas above
-- Add a small test page in `dashboard/` to visualize recent stats
-- Harden further parts of the application for production
-
-If you want any of the above, tell me which and I will implement it next.
