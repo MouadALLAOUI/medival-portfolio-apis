@@ -1,0 +1,378 @@
+/* --- 1. Global/Reset Styles --- */
+:root {
+    --color-dark-primary: #2c3e50; /* Dark Blue/Grey for Sidebar */
+    --color-dark-secondary: #34495e; /* Slightly lighter dark for hover/active */
+    --color-light-primary: #ecf0f1; /* Light Grey for Main Background */
+    --color-light-secondary: #ffffff; /* White for Cards/Content */
+    --color-accent: #3498db; /* Blue for primary actions/highlights */
+    --color-text-dark: #2c3e50;
+    --color-text-light: #ecf0f1;
+    --color-success: #2ecc71;
+    --color-error: #e74c3c;
+    --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-family);
+    background-color: var(--color-light-primary);
+    color: var(--color-text-dark);
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+    color: var(--color-accent);
+}
+
+/* --- 2. Layout --- */
+.dashboard-container {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* --- 3. Sidebar (Dark) --- */
+.sidebar {
+    width: 250px;
+    background-color: var(--color-dark-primary);
+    color: var(--color-text-light);
+    display: flex;
+    flex-direction: column;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+}
+
+.sidebar-header {
+    padding: 20px;
+    text-align: center;
+    border-bottom: 1px solid var(--color-dark-secondary);
+}
+
+.sidebar-header h2 {
+    font-size: 1.5em;
+    margin: 0;
+    color: var(--color-text-light);
+}
+
+.sidebar-nav {
+    flex-grow: 1;
+    padding: 10px 0;
+}
+
+.sidebar-nav ul {
+    list-style: none;
+}
+
+.sidebar-nav li a {
+    display: flex;
+    align-items: center;
+    padding: 15px 20px;
+    color: var(--color-text-light);
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.sidebar-nav li a:hover {
+    background-color: var(--color-dark-secondary);
+}
+
+.sidebar-nav li a.active {
+    background-color: var(--color-accent);
+    color: var(--color-light-secondary);
+    font-weight: bold;
+}
+
+.sidebar-nav li a i {
+    margin-right: 10px;
+    font-size: 1.1em;
+}
+
+.sidebar-footer {
+    padding: 15px 20px;
+    border-top: 1px solid var(--color-dark-secondary);
+}
+
+.logout-btn {
+    display: block;
+    width: 100%;
+    text-align: left;
+    background: none;
+    border: none;
+    color: var(--color-text-light);
+    padding: 10px 0;
+    transition: color 0.3s;
+}
+
+.logout-btn:hover {
+    color: var(--color-error);
+}
+
+/* --- 4. Main Content (Light) --- */
+.main-content {
+    flex-grow: 1;
+    padding: 30px;
+    background-color: var(--color-light-primary);
+}
+
+.page-header {
+    margin-bottom: 30px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #ccc;
+}
+
+.page-header h1 {
+    font-size: 2em;
+    color: var(--color-dark-primary);
+    margin-bottom: 5px;
+}
+
+.page-header p {
+    color: #7f8c8d;
+}
+
+/* --- Dashboard Stats --- */
+.dashboard-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.stat-card {
+    background-color: var(--color-light-secondary);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.stat-icon {
+    font-size: 2.5em;
+    color: var(--color-accent);
+}
+
+.stat-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.stat-value {
+    font-size: 1.8em;
+    font-weight: bold;
+    color: var(--color-dark-primary);
+}
+
+.stat-label {
+    font-size: 0.9em;
+    color: #7f8c8d;
+    text-transform: uppercase;
+}
+
+/* --- Dashboard/Statistics Charts --- */
+.dashboard-charts, .statistics-charts {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.statistics-charts .full-width {
+    grid-column: 1 / -1;
+}
+
+.chart-container {
+    background-color: var(--color-light-secondary);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.chart-container h2 {
+    font-size: 1.3em;
+    margin-bottom: 15px;
+    color: var(--color-dark-primary);
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+}
+
+.chart-wrapper {
+    position: relative;
+    height: 300px; /* Fixed height for charts */
+    width: 100%;
+}
+
+/* --- 5. Pure JS Chart Styling (Canvas/SVG Placeholder) --- */
+/* The charts.js will create the actual elements, this is for the container */
+canvas {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+/* --- 6. Forms (Login, Profile, Settings) --- */
+.login-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: var(--color-dark-primary);
+}
+
+.login-container {
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+}
+
+.login-box, .form-card {
+    background-color: var(--color-light-secondary);
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.login-box h2, .login-box h3 {
+    text-align: center;
+    color: var(--color-dark-primary);
+    margin-bottom: 10px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    font-size: 0.9em;
+}
+
+.form-group input[type="text"],
+.form-group input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1em;
+}
+
+.btn-primary {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: var(--color-accent);
+    color: var(--color-light-secondary);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: #2980b9;
+}
+
+.default-creds {
+    text-align: center;
+    margin-top: 15px;
+    font-size: 0.8em;
+    color: #7f8c8d;
+}
+
+/* Profile and Settings Page Styling */
+.profile-info, .password-change, .system-settings {
+    margin-bottom: 30px;
+}
+
+.profile-info h2, .password-change h2, .system-settings h2 {
+    color: var(--color-dark-primary);
+    margin-bottom: 15px;
+    font-size: 1.5em;
+}
+
+.info-card {
+    background-color: var(--color-light-secondary);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.info-card p {
+    margin-bottom: 8px;
+}
+
+.form-card {
+    max-width: 600px;
+}
+
+.form-group small {
+    display: block;
+    margin-top: 5px;
+    color: #7f8c8d;
+    font-size: 0.8em;
+}
+
+/* --- 7. Utility Messages --- */
+.error-message, .success-message {
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 4px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.error-message {
+    background-color: #fbecec;
+    color: var(--color-error);
+    border: 1px solid var(--color-error);
+}
+
+.success-message {
+    background-color: #e9fbe9;
+    color: var(--color-success);
+    border: 1px solid var(--color-success);
+}
+
+/* --- 8. Responsiveness --- */
+@media (max-width: 992px) {
+    .dashboard-charts, .statistics-charts {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .sidebar {
+        width: 80px; /* Collapsed sidebar */
+    }
+
+    .sidebar-header h2, .sidebar-nav li a span, .sidebar-footer span {
+        display: none;
+    }
+
+    .sidebar-nav li a {
+        justify-content: center;
+        padding: 15px 0;
+    }
+
+    .sidebar-nav li a i {
+        margin-right: 0;
+    }
+
+    .logout-btn {
+        text-align: center;
+    }
+
+    .main-content {
+        padding: 20px;
+    }
+
+    .dashboard-stats {
+        grid-template-columns: 1fr;
+    }
+}
